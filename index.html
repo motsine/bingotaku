@@ -14,9 +14,9 @@
 
         /* Style for the grid container */
         .text-grid {
-            max-width: 600px; /* Updated max-width */
+            max-width: 800px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Updated grid-template-columns */
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             grid-gap: 10px;
             padding: 10px;
         }
@@ -32,7 +32,6 @@
             cursor: pointer;
             font-size: 16px; /* Default font size */
             font-family: 'Roboto Slab', serif; /* Use the Roboto Slab font */
-            overflow: hidden; /* Hide any overflowing content (such as images) */
         }
 
         /* Position the content inside the square block */
@@ -48,7 +47,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+            background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent red */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -57,62 +56,12 @@
             font-family: 'Lumanosimo', sans-serif; /* Use the Lumanosimo font */
         }
 
-        /* Add a class for the tooltip container */
-        .tooltip {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background-color: #f0f0f0; /* Tooltip background color */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: default;
-            font-size: 16px; /* Tooltip icon size */
-        }
-      
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 140px;
-            background-color: black;
-            color: #fff;
-            text-align: center;
-            font-size:12px;
-            border-radius: 6px;
-            padding: 5px 0;
-            top: 5px;
-            right: 105%;
-
-      /* Position the tooltip */
-            position: absolute;
-            z-index: 1;
-        }
-
-      .tooltip:hover .tooltiptext {
-          visibility: visible;
-        }
-
-        /* Resize the images to fit within the blocks */
-        .text-content img {
-            max-width: 100%;
-            max-height: 100%;
-        }
-      
-         @media screen and (max-width: 600px) {
-           
-           body {
-            display: block;
-            margin-top:20px ;
-            }
-           
+        /* Responsive adjustments for smaller screens (e.g., mobile phones) */
+        @media screen and (max-width: 600px) {
             .text-grid {
-               width:90%;
-               grid-template-columns: 1fr; 
+                grid-template-columns: 1fr; /* Single column for smaller screens */
             }
 
-           
             .text-block {
                 font-size: 14px; /* Adjust the font size for smaller screens */
             }
@@ -125,82 +74,65 @@
 <body>
     <div class="text-grid">
         <!-- Bingo elements here -->
-  
+    
+
+    <div class="text-grid">
         <div class="text-block" onclick="toggleSelected(this)">
             <div class="text-content">
-                <div class="tooltip" title="Tooltip text">?
-                  <span class="tooltiptext">Cocher si Otaku dit "yamete kudasai"</span>
-                </div>
-                <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/yamete.jpg" alt="Yamete Kudasai">
+                <h2>Yamete kudasai</h2>
+                <p>Cocher si Otaku dit "yamete kudasai"</p>
             </div>
         </div>
+        <!-- Add more blocks as needed to create a 3x3 grid -->
         <div class="text-block" onclick="toggleSelected(this)">
             <div class="text-content">
-                <div class="tooltip" title="Tooltip text">?
-                  <span class="tooltiptext">Cocher si Otaku fait une blague graveleuse (mais on l'aurait tous fait à sa place)</span>
-                </div>
-                <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/espritmalplacey.jpg" alt="Esprit Mal Placey">
-            </div>
-        </div>
-        <div class="text-block" onclick="toggleSelected(this)">
-            <div class="text-content">
-                <div class="tooltip" title="Tooltip text">?
-                  <span class="tooltiptext">Cocher s'il y a un sub ou un resub (ou de l'argent sous toute forme)</span>
-                </div>
-                <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/partitio.jpg" alt="La carte de visite de Partitio">
-            </div>
-        </div>
-        
-	<div class="text-block" onclick="toggleSelected(this)">
-            <div class="text-content">
-                <div class="tooltip" title="Tooltip text">?
-                  <span class="tooltiptext">Cocher si Otaku dit "Mais vous arrêtez pas de m'embêter" ou quelque chose de proche</span>
-                </div>
-                <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/maisvousmembetez.jpg" alt="Mais vous arrêtez pas de m'embêter">
+                <h2>Esprit Mal Placey</h2>
+                <p>Otaku fait une blague graveleuse (mais on l'aurait tous fait à sa place)</p>
             </div>
         </div>
         <div class="text-block" onclick="toggleSelected(this)">
             <div class="text-content">
-                <div class="tooltip" title="Tooltip text">?
-                  <span class="tooltiptext">Cocher si le chien d'Otaku interrompt le live</span>
-                </div>
-                <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/otakwouf.jpg" alt="Otakwouf apparaît">
+                <h2>La "carte de visite" de Partitio</h2>
+                <p>Un sub ou un resub (et s'il y a un train de la hype, c'est encore plus valide)</p>
             </div>
         </div>
         <div class="text-block" onclick="toggleSelected(this)">
             <div class="text-content">
-                <div class="tooltip" title="Tooltip text">?
-                  <span class="tooltiptext">Cocher si le tchat envoie une rafale d'amour à quelqu'un dans le tchat (ou a Otaku)</span>
-                </div>
-                <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/pipou.jpg" alt="Le tchat est trop pipou">
-            </div>
-        </div>
-	<div class="text-block" onclick="toggleSelected(this)">
-            <div class="text-content">
-                <div class="tooltip" title="Tooltip text">?
-                  <span class="tooltiptext">Cocher si Otaku chante spontanément (ne compte pas si quelqu'un dans le tchat lui demande de le faire)</span>
-                </div>
-                <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/chansonspontanee.jpg" alt="chanson spontanée">
+                <h2>Vous arrêtez pas de m'embêter</h2>
+                <p>Otaku dit "Mais vous arrêtez pas de m'embêter" ou quelque chose de proche</p>
             </div>
         </div>
         <div class="text-block" onclick="toggleSelected(this)">
             <div class="text-content">
-                <div class="tooltip" title="Tooltip text">?
-                  <span class="tooltiptext">Cocher si on reprend un jeu déjà streamé depuis le début</span>
-                </div>
-                <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/backintime.jpg" alt="Retour en arrière. On refait un jeu depuis le début">
+                <h2>Otakwouf</h2>
+                <p>Le chien d'Otaku intervient sur le live</p>
             </div>
         </div>
         <div class="text-block" onclick="toggleSelected(this)">
             <div class="text-content">
-                <div class="tooltip" title="Tooltip text">?
-                  <span class="tooltiptext">Cocher si tout le Tchat fait "..."</span>
-                </div>
-                <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/trois-points.jpg" alt="Tout le tchat fait ...">
+                <h2>Rafale d'amour</h2>
+                <p>Le tchat envoie une rafale d'amour à quelqu'un dans le tchat (ou a Otaku)</p>
+            </div>
+        </div>
+        <div class="text-block" onclick="toggleSelected(this)">
+            <div class="text-content">
+                <h2>Chanson spontanée</h2>
+                <p>Otaku chante spontanément (ne compte pas si quelqu'un dans le tchat lui demande de la faire)</p>
+            </div>
+        </div>
+        <div class="text-block" onclick="toggleSelected(this)">
+            <div class="text-content">
+                <h2>Retour vers le futur</h2>
+                <p>On reprend un jeu déjà streamé depuis le début</p>
+            </div>
+        </div>
+        <div class="text-block" onclick="toggleSelected(this)">
+            <div class="text-content">
+                <h2>"..."</h2>
+                <p>Tout le Tchat fait "..."</p>
             </div>
         </div>
     </div>
-
 
     <script>
         function toggleSelected(element) {
@@ -209,3 +141,4 @@
     </script>
 </body>
 </html>
+
