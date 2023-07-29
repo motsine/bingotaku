@@ -5,7 +5,7 @@
     <style>
         /* Center the grid container on the page */
         body {
-            display: flex;
+            display: grid;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -14,6 +14,7 @@
 
         /* Style for the grid container */
         .text-grid {
+            display: flex;
             max-width: 600px; /* Updated max-width */
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Updated grid-template-columns */
@@ -99,6 +100,31 @@
             max-width: 100%;
             max-height: 100%;
         }
+      
+        /* compteur de jeu fini */
+        .custom-block {
+            font-family:roboto slab;
+            justify-content: center;
+            text-align:center;
+            align-items: center;
+            max-width: 600px;
+            background-color: lightgray;
+            border-radius: 10px;
+            padding: 20px;
+            margin:20px;
+        }
+
+        .big-bold {
+            font-size: 24px;
+            font-weight: bold;
+            padding:10px;
+        }
+      
+      .small-comment {
+          font-size:10px;
+          font-style:italic;
+          color:gray;
+      }
       
          @media screen and (max-width: 600px) {
            
@@ -200,7 +226,11 @@
             </div>
         </div>
     </div>
-
+    <div class="custom-block">
+        <div class="big-bold"> 1 </div>
+        <div>🌟Jeu fini en live en 2023🌟</div>
+        <div><span class="small-comment">Bravo<span></div>
+    </div>
 
     <script>
         function toggleSelected(element) {
