@@ -10,6 +10,44 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            background-color: #F5F5F5;
+        }
+
+        .title-container {
+            text-align: center;
+            margin-bottom: 10px;
+            position: relative; /* Add position relative for the pseudo-elements */
+        }
+
+        .title {
+            font-family: 'Roboto Slab', serif;
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 0px;
+            margin-top: 10px;
+            display: inline-block; /* Display inline-block to shrink-wrap the container */
+            background-color: #F5F5F5; /* Add a white background color */
+            padding: 0 20px; /* Add some padding to the title container */
+            position: relative; /* Add position relative for the pseudo-elements */
+        }
+
+        .subtitle {
+            font-family: 'Roboto Slab', serif;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Pseudo-element for the horizontal line */
+        .title-container::before {
+            content: '';
+            position: absolute;
+            top: 60%;
+            left: 0%;
+            width: 100%;
+            height: 1px;
+            background-color: #f2ae72; /* Color of the horizontal line */
+            transform: translateY(-50%); /* Center the line vertically */
+            z-index: -1; /* Put the line below the title container */
         }
 
         /* Style for the grid container */
@@ -53,7 +91,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #646464; /* Cross color */
+            color: #000000; /* Cross color */
             font-size: 80px; /* Cross size */
             font-family: 'Lumanosimo', sans-serif; /* Use the Lumanosimo font */
         }
@@ -103,28 +141,44 @@
       
         /* compteur de jeu fini */
         .custom-block {
-            font-family:roboto slab;
+            font-family: 'Roboto Slab', serif;
             justify-content: center;
-            text-align:center;
+            text-align: center;
             align-items: center;
             max-width: 600px;
-            background-color: lightgray;
             border-radius: 10px;
-            padding: 20px;
-            margin:20px;
+            margin: 20px;
+            background-color: #ffcc5c;
+            color: white;
+            text-shadow: #c65e00 1px 0 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */ 
+            position: relative; /* Add position relative for the inside border */
         }
 
+        /* Style for the inside border */
+        .custom-block .container {
+            margin: 4px;
+            border: 2px solid white; /* Light gray color for the border */
+            padding: 14px;
+            border-radius: 8px; /* Adjust the border radius to match the block */
+        }
+
+        /* Style for the "Jeu fini en live en 2023" text */
         .big-bold {
             font-size: 24px;
             font-weight: bold;
-            padding:10px;
+            color: #f2ae72;
+            text-shadow: none;
+            padding: 10px;
+            background-color: white; /* Dark gray background for the text */
+            border-radius: 6px;
         }
-      
-      .small-comment {
-          font-size:10px;
-          font-style:italic;
-          color:gray;
-      }
+
+        /* Style for the "Bravo" comment */
+        .small-comment {
+            font-size: 12px;
+            font-style: italic;
+        }
       
          @media screen and (max-width: 600px) {
            
@@ -143,98 +197,176 @@
                 font-size: 14px; /* Adjust the font size for smaller screens */
             }
         }
+
+        /* CTA style */
+        .cta-button {
+            display: block;
+            margin: 10px 20% 25px 20%;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-family: Roboto slab;
+            font-size: 12px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #000;
+            text-align: center;animation: changeColor 6s linear infinite; /* Apply the animation */
+        }
+
+        /* Keyframes for the background color animation */
+        @keyframes changeColor {
+            0% {
+                background-color: #fddc5c;
+            }
+            25% {
+                background-color: #fdb0c0;
+            }
+            50% {
+                background-color: #b4b3ed;
+            }
+            75% {
+                background-color: #fdb0c0;
+            }
+            100% {
+                background-color: #fddc5c;
+            }
+        } 
+
+        /* On hover, change the background color slightly */
+        .cta-button:hover {
+            background-color: #fdd74d;
+        }
+
+        .text-title {
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Impact', sans-serif;
+            font-size: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            -webkit-text-stroke: 1px;
+            -webkit-text-stroke-color: rgb(0, 0, 0);
+        }
+
     </style>
     <!-- Include the Roboto Slab and Lumanosimo fonts from Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lumanosimo&display=swap">
 </head>
 <body>
+    <!-- Title and subtitle -->
+    <div class="title-container">
+        <h2 class="title">Bingo</h2>
+        <div class="subtitle">des lives d'Esprit Otaku</div>
+    </div>
     <div class="text-grid">
         <!-- Bingo elements here -->
   
         <div class="text-block" onclick="toggleSelected(this)">
             <div class="text-content">
+                <div class="text-title">Yamete Kudasai</div>
                 <div class="tooltip" title="Tooltip text">?
                   <span class="tooltiptext">Cocher si Otaku dit "yamete kudasai"</span>
                 </div>
-                <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/yamete.jpg" alt="Yamete Kudasai">
+                <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/yamete_couleur.jpg" alt="Yamete Kudasai">
             </div>
         </div>
         <div class="text-block" onclick="toggleSelected(this)">
             <div class="text-content">
+                <div class="text-title">Esprit Mal Placey</div>
                 <div class="tooltip" title="Tooltip text">?
                   <span class="tooltiptext">Cocher si Otaku fait une blague graveleuse (mais on l'aurait tous fait à sa place)</span>
-                </div>
-                <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/espritmalplacey.jpg" alt="Esprit Mal Placey">
+                </div>                
+                <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/espritmalplacey_couleur.jpg" alt="Esprit Mal Placey">
             </div>
         </div>
         <div class="text-block" onclick="toggleSelected(this)">
             <div class="text-content">
+                <div class="text-title">Carte de visite</div>
                 <div class="tooltip" title="Tooltip text">?
                   <span class="tooltiptext">Cocher s'il y a un sub ou un resub (ou de l'argent sous toute forme)</span>
-                </div>
-                <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/partitio.jpg" alt="La carte de visite de Partitio">
+                </div>                
+                <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/partitio_couleur.jpg" alt="La carte de visite de Partitio">
             </div>
         </div>
         
 	<div class="text-block" onclick="toggleSelected(this)">
             <div class="text-content">
+                <div class="text-title" style="top:-55px;">Mais vous arrêtez<br>pas de m'embêter</div>
                 <div class="tooltip" title="Tooltip text">?
                   <span class="tooltiptext">Cocher si Otaku dit "Mais vous arrêtez pas de m'embêter" ou quelque chose de proche</span>
-                </div>
-                <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/maisvousmembetez.jpg" alt="Mais vous arrêtez pas de m'embêter">
+                </div>                
+                <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/maisvousmembetez_couleur.jpg" alt="Mais vous arrêtez pas de m'embêter">
             </div>
         </div>
         <div class="text-block" onclick="toggleSelected(this)">
             <div class="text-content">
+                <div class="text-title">Otakwouf</div>
                 <div class="tooltip" title="Tooltip text">?
-                  <span class="tooltiptext">Cocher si le chien d'Otaku interrompt le live</span>
-                </div>
-                <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/otakwouf.jpg" alt="Otakwouf apparaît">
+                  <span class="tooltiptext">Cocher si le chien d'Otaku s'incruste dans le live</span>
+                </div>                
+                <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/otakwouf_couleur.jpg" alt="Otakwouf apparaît">
             </div>
         </div>
         <div class="text-block" onclick="toggleSelected(this)">
             <div class="text-content">
+                <div class="text-title">Tricheur ???</div>
                 <div class="tooltip" title="Tooltip text">?
-                  <span class="tooltiptext">Cocher si le tchat envoie une rafale d'amour à quelqu'un dans le tchat (ou a Otaku)</span>
-                </div>
-                <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/pipou.jpg" alt="Le tchat est trop pipou">
+                  <span class="tooltiptext">Cocher si Otaku est encore en train de tricher ou de mentir</span>
+                </div>                
+                <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/triche_couleur.jpg" alt="Tricheurs ?">
             </div>
         </div>
 	<div class="text-block" onclick="toggleSelected(this)">
             <div class="text-content">
+                <div class="text-title">Chansonnette spontanée</div>
                 <div class="tooltip" title="Tooltip text">?
                   <span class="tooltiptext">Cocher si Otaku chante spontanément (ne compte pas si quelqu'un dans le tchat lui demande de le faire)</span>
-                </div>
-                <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/chansonspontanee.jpg" alt="chanson spontanée">
+                </div>                
+                <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/chansonnettespontanee_couleur.jpg" alt="chanson spontanée">
             </div>
         </div>
         <div class="text-block" onclick="toggleSelected(this)">
             <div class="text-content">
+                <div class="text-title">Cé koa un isekai ?</div>
                 <div class="tooltip" title="Tooltip text">?
                   <span class="tooltiptext">Cocher si on sait plus ce que c'est un isekai</span>
-                </div>
-                <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/isekoa.jpg" alt="Retour en arrière. On refait un jeu depuis le début">
+                </div>                
+                <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/isekoa_couleur.jpg" alt="C'est quoi un isekai">
             </div>
         </div>
         <div class="text-block" onclick="toggleSelected(this)">
             <div class="text-content">
+                <div class="text-title">"..."</div>
                 <div class="tooltip" title="Tooltip text">?
                   <span class="tooltiptext">Cocher si tout le Tchat fait "..."</span>
-                </div>
-                <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/trois-points.jpg" alt="Tout le tchat fait ...">
+                </div>                
+                <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/trois-points_couleur.jpg" alt="Tout le tchat fait ...">
             </div>
         </div>
     </div>
+    <!-- CTA button for downloading the image -->
+    <a class="cta-button" href="https://raw.githubusercontent.com/motsine/bingotaku/main/bingo_print.jpg" download>
+        Télécharger la version print
+    </a>
     <div class="custom-block">
-        <div class="big-bold"> 1 </div>
-        <div>🌟Jeu fini en live en 2023🌟</div>
-        <div><span class="small-comment">Bravo<span></div>
+        <div class="container">
+            <div class="big-bold">🌟 1 🌟</div>
+            <div>Jeu fini en live en 2023</div>
+            <div><span class="small-comment">Bravo<span></div>
+        </div>
     </div>
     <div>
-        <p>Prochaines étapes :<br>mise en couleur</p>  
+        <p>Bon jeu !</p>
     </div>
-		
+	
+    
+    
     <script>
         function toggleSelected(element) {
             element.classList.toggle('selected');
