@@ -270,7 +270,7 @@
     <div class="text-grid">
         <!-- Bingo elements here -->
   
-        <div class="text-block" onclick="toggleSelected(this)">
+        <div class="text-block">
             <div class="text-content">
                 <div class="text-title">Yamete Kudasai</div>
                 <div class="tooltip" title="Tooltip text">?
@@ -279,7 +279,7 @@
                 <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/yamete_couleur.jpg" alt="Yamete Kudasai">
             </div>
         </div>
-        <div class="text-block" onclick="toggleSelected(this)">
+        <div class="text-block">
             <div class="text-content">
                 <div class="text-title">Esprit Mal Placey</div>
                 <div class="tooltip" title="Tooltip text">?
@@ -288,7 +288,7 @@
                 <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/espritmalplacey_couleur.jpg" alt="Esprit Mal Placey">
             </div>
         </div>
-        <div class="text-block" onclick="toggleSelected(this)">
+        <div class="text-block">
             <div class="text-content">
                 <div class="text-title">Carte de visite</div>
                 <div class="tooltip" title="Tooltip text">?
@@ -298,7 +298,7 @@
             </div>
         </div>
         
-	<div class="text-block" onclick="toggleSelected(this)">
+	<div class="text-block">
             <div class="text-content">
                 <div class="text-title" style="font-size: 0.9em;">Mais vous arrêtez pas de m'embêter</div>
                 <div class="tooltip" title="Tooltip text">?
@@ -307,7 +307,7 @@
                 <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/maisvousmembetez_couleur.jpg" alt="Mais vous arrêtez pas de m'embêter">
             </div>
         </div>
-        <div class="text-block" onclick="toggleSelected(this)">
+        <div class="text-block">
             <div class="text-content">
                 <div class="text-title">Otakwouf</div>
                 <div class="tooltip" title="Tooltip text">?
@@ -316,7 +316,7 @@
                 <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/otakwouf_couleur.jpg" alt="Otakwouf apparaît">
             </div>
         </div>
-        <div class="text-block" onclick="toggleSelected(this)">
+        <div class="text-block">
             <div class="text-content">
                 <div class="text-title">Tricheur ???</div>
                 <div class="tooltip" title="Tooltip text">?
@@ -325,7 +325,7 @@
                 <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/triche_couleur.jpg" alt="Tricheurs ?">
             </div>
         </div>
-	<div class="text-block" onclick="toggleSelected(this)">
+	<div class="text-block">
             <div class="text-content">
                 <div class="text-title">Chansonnette spontanée</div>
                 <div class="tooltip" title="Tooltip text">?
@@ -334,7 +334,7 @@
                 <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/chansonnettespontanee_couleur.jpg" alt="chanson spontanée">
             </div>
         </div>
-        <div class="text-block" onclick="toggleSelected(this)">
+        <div class="text-block">
             <div class="text-content">
                 <div class="text-title">Cé koa un isekai&nbsp;?</div>
                 <div class="tooltip" title="Tooltip text">?
@@ -343,7 +343,7 @@
                 <img src="https://raw.githubusercontent.com/motsine/bingotaku/main/isekoa_couleur.jpg" alt="C'est quoi un isekai">
             </div>
         </div>
-        <div class="text-block" onclick="toggleSelected(this)">
+        <div class="text-block">
             <div class="text-content">
                 <div class="text-title">"..."</div>
                 <div class="tooltip" title="Tooltip text">?
@@ -372,8 +372,36 @@
     
     <script>
         function toggleSelected(element) {
-            element.classList.toggle('selected');
+          element.classList.toggle('selected');
         }
+        
+        function loadState(boxes) {
+          const date = JSON.parse(localStorage.getItem('bingo_date')) || '';
+          
+          if (new Date().toLocaleDateString() != date) {
+            return;
+          }
+          
+          const state = JSON.parse(localStorage.getItem('bingo_state') || '[]');
+          
+          boxes.forEach((b, i) => {
+            if (state[i]) {
+              toggleSelected(b);
+            }
+          });
+        }
+        
+        const boxes = [...document.querySelectorAll('.text-block')];
+        
+        boxes.forEach(b => {
+          b.addEventListener('click', e => {
+            toggleSelected(e.currentTarget);
+            localStorage.setItem('bingo_state', JSON.stringify(boxes.map(box => box.classList.contains('selected'))));
+            localStorage.setItem('bingo_date', JSON.stringify(new Date().toLocaleDateString()));
+          });
+        });
+        
+        loadState(boxes);
     </script>
 </body>
 </html>
